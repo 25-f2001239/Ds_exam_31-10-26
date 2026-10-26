@@ -1,7 +1,9 @@
 #include <stdio.h>
 int main()  {
     int a[100], n;
+    printf("Enter no of elements of arraay");
     scanf("%d", &n);
+    printf("Enter elements");
     for(int i=0;i<n;i++){
         scanf("%d", &a[i]);
     }
@@ -13,5 +15,5 @@ int main()  {
     }
 }
     }
-    puts("None");
+printf("None\n");
 }
