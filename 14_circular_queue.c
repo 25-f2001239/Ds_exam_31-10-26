@@ -1,29 +1,61 @@
 #include <stdio.h>
-int main()  {
-    int q[5], f=-1, r=-1, c, x;
-    do  {
-        scanf("%d", &c);
-        if(c==1)  {
-            if((r+1)%5!=f)  {
-                scanf("%d", &x);
-                if(f<0)f=0;
-                r=(r+1)%5;
-                q[r]=x;
-            } else puts("Full");
-        } else if(c==2)  {
-            if(f<0)puts("Empty");
-            else  {
-                printf("%d\n", q[f]);
-                if(f==r)f=r=-1;
-                else f=(f+1)%5;
+
+int main(void) {
+    int queue[5];
+    int front = -1;
+    int rear = -1;
+    int command, value;
+
+    do {
+        scanf("%d", &command);
+
+        if (command == 1) {  // Add an item
+            if ((rear + 1) % 5 == front) {
+                puts("Full");
+            } else {
+                scanf("%d", &value);
+
+                if (front == -1) {
+                    front = 0;  // First item in the queue
+                }
+
+                rear = (rear + 1) % 5;
+                queue[rear] = value;
             }
-        } else if(c==3&&f>=0)  {
-            for(int i=f;;i=(i+1)%5)  {
-                printf("%d ", q[i]);
-                if(i==r)break;
+
+        } else if (command == 2) {  // Remove the oldest item
+            if (front == -1) {
+                puts("Empty");
+            } else {
+                printf("%d\n", queue[front]);
+
+                if (front == rear) {
+                    front = rear = -1;  // Queue is now empty
+                } else {
+                    front = (front + 1) % 5;
+                }
             }
-            puts("");
+
+        } else if (command == 3) {  // Display all items
+            if (front == -1) {
+                puts("Empty");
+            } else {
+                int i = front;
+
+                while (1) {
+                    printf("%d ", queue[i]);
+
+                    if (i == rear) {
+                        break;
+                    }
+
+                    i = (i + 1) % 5;
+                }
+
+                puts("");
+            }
         }
-    }
-    while(c);
+    } while (command != 0);
+
+    return 0;
 }
