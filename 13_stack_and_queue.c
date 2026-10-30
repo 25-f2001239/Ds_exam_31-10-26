@@ -1,21 +1,42 @@
 #include <stdio.h>
-int main()  {
-    int s[5], q[5], top=-1, f=0, r=0, c, x;
-    do  {
-        scanf("%d", &c);
-        if(c==1)  {
-            scanf("%d", &x);
-            if(top<4)s[++top]=x;
-        } else if(c==2)  {
-            if(top>=0)printf("%d\n", s[top--]);
-            else puts("Empty");
-        } else if(c==3)  {
-            scanf("%d", &x);
-            if(r<5)q[r++]=x;
-        } else if(c==4)  {
-            if(f<r)printf("%d\n", q[f++]);
-            else puts("Empty");
+
+int main(void) {
+    int stack[5];
+    int queue[5];
+
+    int top = -1;  // Stack is empty
+    int front = 0; // Next queue item to remove
+    int rear = 0;  // Next queue position to fill
+
+    int command, value;
+
+    do {
+        scanf("%d", &command);
+
+        if (command == 1) {               // Push onto stack
+            scanf("%d", &value);
+            if (top < 4) {
+                stack[++top] = value;
+            }
+        } else if (command == 2) {        // Pop from stack
+            if (top >= 0) {
+                printf("%d\n", stack[top--]);
+            } else {
+                puts("Empty");
+            }
+        } else if (command == 3) {        // Add to queue
+            scanf("%d", &value);
+            if (rear < 5) {
+                queue[rear++] = value;
+            }
+        } else if (command == 4) {        // Remove from queue
+            if (front < rear) {
+                printf("%d\n", queue[front++]);
+            } else {
+                puts("Empty");
+            }
         }
-    }
-    while(c);
+    } while (command != 0);
+
+    return 0;
 }
