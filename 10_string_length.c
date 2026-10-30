@@ -2,7 +2,11 @@
 #include <string.h>
 int main()  {
     char s[500];
-    fgets(s, sizeof s, stdin);
-    s[strcspn(s, "\n")]=0;
-    printf("%zu\n", strlen(s));
+    printf("Enter the string   ");
+    scanf("%s",&s);
+    int i=0;
+    while(s[i]!='\0'){
+        i++;
+    }
+    printf("The length of str is %d",i);
 }
