@@ -12,8 +12,8 @@ int main()  {
             if(a[i]==a[j])  {
         printf("%d\n", a[i]);
         return 0;
+        }
     }
-}
     }
 printf("None\n");
 }

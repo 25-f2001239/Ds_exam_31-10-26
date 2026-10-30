@@ -14,5 +14,4 @@ int main(){
         i=i*10;
     }
     printf("%d",x);
-
 }
